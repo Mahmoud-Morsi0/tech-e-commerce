@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { loginSchema } from "@/validation/login-validation"
 import { useFormik } from "formik"
+import { Link } from "react-router-dom"
 
 const initialValues = {
   email: "",
@@ -18,7 +19,6 @@ export function Login() {
       actions.resetForm()
     }
   })
-
 
   return (
     <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px] text-white  ">
@@ -43,13 +43,13 @@ export function Login() {
                   onBlur={handleBlur}
                   placeholder="m@example.com"
                 />
-                <p className="text-red-600 h-4">
+                <p className="text-red-600 h-6">
                   {errors.email && touched.email
                     ? errors.email
                     : null}
                 </p>
               </div>
-              <div className="grid gap-2">
+              <div className="grid ">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                   <a
@@ -66,28 +66,32 @@ export function Login() {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur} />
-                    <p className="text-red-600 h-4">
-                  {errors.email && touched.email
-                    ? errors.email
+                <p className="text-red-600 h-7">
+                  {errors.password && touched.password
+                    ? errors.password
                     : null}
                 </p>
               </div>
               <Button
                 type="submit"
-                className="w-full bg-orange-500 hover:bg-blue-500 hover:text-white"
+                className="w-full bg-orange-500 hover:bg-blue-500 hover:text-white mb-2"
               >
                 Login
               </Button>
-              <Button variant="outline" className="w-full  text-black hover:bg-blue-500 hover:text-white border-0 ">
+              <Button 
+              variant="outline" 
+              onClick={(e)=>{e.preventDefault()}}
+              className="w-full  text-black hover:bg-blue-500 hover:text-white border-0 "
+              >
                 Login with Google
               </Button>
             </form>
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <a href="#" className="underline">
+            <Link to="/reg" className="underline">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </div>

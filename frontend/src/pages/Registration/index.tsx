@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -11,16 +10,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useFormik } from "formik"
 import { regesterSchema } from "@/validation/regester-validation"
-
+import { Link } from "react-router-dom"
 
 const initialValues = {
     firstName: "",
     lastName: "",
     email: "",
     password: ""
-
 }
-
 export function RegistrationForm() {
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
@@ -41,7 +38,7 @@ export function RegistrationForm() {
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleSubmit}>
-                    <div className="grid gap-4">
+                    <div className="grid gap-3">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-2">
                                 <Label htmlFor="first-name">First name</Label>
@@ -55,7 +52,7 @@ export function RegistrationForm() {
                                     id="first-name"
                                     placeholder="Max"
                                 />
-                                <p className="text-red-600 h-2">
+                                <p className="text-red-600 ">
                                     {errors.firstName && touched.firstName
                                         ? errors.firstName
                                         : null
@@ -73,7 +70,7 @@ export function RegistrationForm() {
                                     id="last-name"
                                     placeholder="Robinson"
                                 />
-                                <p className="text-red-600 h-2">
+                                <p className="text-red-600 ">
                                     {errors.lastName && touched.lastName
                                         ? errors.lastName
                                         : null
@@ -94,7 +91,7 @@ export function RegistrationForm() {
                                 placeholder="m@example.com"
 
                             />
-                            <p className="text-red-600 h-2">
+                            <p className="text-red-600">
                                 {errors.email && touched.email
                                     ? errors.email
                                     : null
@@ -111,7 +108,7 @@ export function RegistrationForm() {
                                 onBlur={handleBlur}
                                 id="password"
                                 type="password" />
-                            <p className="text-red-600 h-2">
+                            <p className="text-red-600 ">
                                 {errors.password && touched.password
                                     ? errors.password
                                     : null
@@ -129,9 +126,9 @@ export function RegistrationForm() {
                     </div>
                     <div className="mt-4 text-center text-sm">
                         Already have an account?{" "}
-                        <a href="#" className="underline">
+                        <Link to="/" className="underline">
                             Sign in
-                        </a>
+                        </Link>
                     </div>
                 </form>
             </CardContent>
